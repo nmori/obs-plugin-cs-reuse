@@ -1,0 +1,6 @@
+.cache/
+/publish
+/src/OBS.NET/obj
+/src/OBS.NET/bin
+/src/OBS.NET.ReUse/obj
+/src/OBS.NET.ReUse/bin

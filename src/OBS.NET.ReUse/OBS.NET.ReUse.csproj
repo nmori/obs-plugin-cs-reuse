@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- 推論エンジン（reuse-win-cli から取り込み）が System.Threading.Lock を使うので net10 -->
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PublishAot>true</PublishAot>
+    <IsAotCompatible>true</IsAotCompatible>
+    <OutputType>Library</OutputType>
+    <AssemblyName>obs-reuse-filter</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <TieredCompilationQuickJit>false</TieredCompilationQuickJit>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <!-- D3D11 は COM の参照カウントを Vortice が自前で扱うので、組み込みの COM 相互運用は使わない -->
+    <BuiltInComInteropSupport>false</BuiltInComInteropSupport>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'win-x64'">
+    <NativeLib>Shared</NativeLib>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OBS.NET\OBS.NET.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
+    <PackageReference Include="Vortice.Direct3D11" Version="3.8.3" />
+  </ItemGroup>
+
+  <Import Project="Shaders.targets" />
+  <Import Project="Model.targets" />
+
+</Project>

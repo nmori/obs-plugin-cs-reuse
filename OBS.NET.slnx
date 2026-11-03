@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/OBS.NET.ReUse/OBS.NET.ReUse.csproj" />
+    <Project Path="src/OBS.NET/OBS.NET.csproj" />
+  </Folder>
+</Solution>
